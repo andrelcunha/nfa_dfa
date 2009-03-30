@@ -27,7 +27,7 @@ class Cnfa{
 	int alphabetN;
 	char *alphabet; 
 	char initial_S[2];
-	char *final_S[][2];
+	vector<string> final_S;
 	vector<string> buffer;
 	void set_buffer(char *);
 	void parse_file();
