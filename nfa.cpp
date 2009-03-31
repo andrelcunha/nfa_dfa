@@ -103,24 +103,25 @@ void Cnfa::parse_file(){
 	cnt=0; //counts state character, like s0, s1, s3223423 and so on. 
 	string aux;
 	for (i=0; i<fi_s_aux; i++){
-		
 		if(temp[i]!=' '){
 			aux[cnt]=temp[i];
 			cnt++;
 		}
-		if((temp[i]==' ')||(temp[i]=='\n')){
+		if((temp[i]==' ')||(i==(temp.size()-1))){
 			if(i!=0){
-				final_S.push_back(aux);
+				final_S.push_back(aux.c_str());
 				aux.clear();
+				cnt=0;
 			}
-			cnt=0;
 		}
 	}
-	for(i=0; i<fi_s_counter; i++){
+	cout<<"Final state(s): ";
+	for(i=0; i<final_S.size(); i++){
 		if (i != 0)
 			cout <<", ";
-		cout<<"Final state(s): "<<final_S[i]<<endl;
-	}/*
+		cout<<final_S[i];
+	}
+	cout<<"\n";
 	//creating 3d vector of strings to keep node links
 	vector <vector<vector<string> > > node; //line(alphabetN) x colluns() x deep
 	cnt=0;
@@ -155,6 +156,6 @@ void Cnfa::parse_file(){
 		for(j=0;j<node[i].size();j++)
 			for(unsigned int k=0;k<node[i][j].size();k++)
 				std::cout<<"Node "<<i<<" "<<j<<" "<<k<<" == "<<node[i][j][k]<<std::endl;
-	 */
+	 /**/
 }
 //--------------------------------------------------------------------------------------
